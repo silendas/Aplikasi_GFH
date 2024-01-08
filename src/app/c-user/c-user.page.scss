@@ -1,0 +1,32 @@
+.bg {
+    /* The image used */
+    --background: url("../../assets/img/bg_mobile_gl.jpg") repeat center center fixed;
+  
+    /* Full height */
+    //height: 100%;
+    
+  
+    /* Center and scale the image nicely */
+    background-repeat: repeat;
+    background-size: cover;
+  }
+
+  
+  .bg-item{
+    --background: linear-gradient(0deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 100%);
+  }
+
+  ion-label{
+    font-weight: 500;
+  }
+
+  .size-stacked{
+    font-size: 22px;
+    padding: 0px;
+  }
+
+  ion-item{
+    --background: transparent;
+    --color: black;
+    color: black;
+  }

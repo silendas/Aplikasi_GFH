@@ -1,0 +1,204 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="px-2" style="--background: #043724">
+    <div class="d-flex align-items-center w-100">
+      <ion-buttons>
+        <ion-icon
+          name="arrow-back-circle-outline"
+          style="font-size: 30px; color: white"
+          [routerLink]="['/tabs/tab2']"
+        ></ion-icon>
+      </ion-buttons>
+      <div>
+        <ion-title class="text-white">Ubah Data Keluarga</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="height: 100%" class="bg">
+  <div>
+    <div style="font-weight: 600; letter-spacing: 1px">
+      <div class="d-block justify-content-center py-3 h-100">
+        <div
+          *ngFor="let data of Data"
+          class="d-flex justify-content-center mb-2"
+        >
+          <img
+            src="{{data.foto}}"
+            alt="Foto Profile"
+            class="rounded mx-2"
+            width="50%"
+          />
+        </div>
+        <ion-item>
+          <div class="d-block">
+            <ion-label>Ubah Foto</ion-label>
+            <ion-input
+              (change)="getFile($event)"
+              type="file"
+              class="p-0"
+            ></ion-input>
+          </div>
+        </ion-item>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-block">
+            <ion-item class="mx-0 px-0">
+              <ion-label position="stacked" class="size-stacked">NIK</ion-label>
+              <ion-input
+                [(ngModel)]="nik"
+                placeholder="Input NIK"
+                class="mt-1"
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div class="d-block">
+            <ion-item class="mx-0 px-0">
+              <ion-label position="stacked" class="size-stacked"
+                >Domisili</ion-label
+              >
+              <ion-select [(ngModel)]="stts_nik" placeholder="Domisili">
+                <ion-select-option value="GFH">GFH</ion-select-option>
+                <ion-select-option value="Luar">Luar GFH</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">KK</ion-label>
+          <ion-input
+            [(ngModel)]="kk"
+            [readonly]="isReadOnly()"
+            placeholder="input KK"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">Nama</ion-label>
+          <ion-input
+            [(ngModel)]="nama"
+            placeholder="Input Nama"
+            class="mt-1"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked"
+            >Tempat Lahir</ion-label
+          >
+          <ion-input
+            [(ngModel)]="tmpt_lhr"
+            placeholder="Input Tempat Lahir"
+            class="mt-1"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked"
+            >Tanggal Lahir</ion-label
+          >
+          <ion-input
+            [(ngModel)]="tgl_lhr"
+            type="date"
+            placeholder="Input Tanggal Lahir"
+            style="--color: black"
+            class="mt-1"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Jenis Kelamin</ion-label>
+          <ion-select [(ngModel)]="jk" placeholder="Jenis kelamin">
+            <ion-select-option value="L">Pria</ion-select-option>
+            <ion-select-option value="P">Wanita</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Agama</ion-label>
+          <ion-select [(ngModel)]="agama" placeholder="Agama">
+            <ion-select-option value="Islam">Islam</ion-select-option>
+            <ion-select-option value="Kristen">Kristen</ion-select-option>
+            <ion-select-option value="Budha">Budha</ion-select-option>
+            <ion-select-option value="Hindu">Hindu</ion-select-option>
+            <ion-select-option value="Konghucu">Konghucu</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status Pernikahan</ion-label>
+          <ion-select [(ngModel)]="stts_prkwn" placeholder="Pernikahan">
+            <ion-select-option value="Menikah">Menikah</ion-select-option>
+            <ion-select-option value="Belum Menikah"
+              >Belum Menikah</ion-select-option
+            >
+            <ion-select-option value="Janda">Janda</ion-select-option>
+            <ion-select-option value="Duda">Duda</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status Keluarga</ion-label>
+          <ion-select [(ngModel)]="stts_klrg" placeholder="Keluarga">
+            <ion-select-option value="Kepala Keluarga"
+              >Kepala Keluarga</ion-select-option
+            >
+            <ion-select-option value="Istri">Istri</ion-select-option>
+            <ion-select-option value="Anak">Anak</ion-select-option>
+            <ion-select-option value="Orang Tua">Orang Tua</ion-select-option>
+            <ion-select-option value="Saudara">Saudara</ion-select-option>
+            <ion-select-option value="ART"
+              >Assisten Rumah Tangga</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status Pekerjaan</ion-label>
+          <ion-select [(ngModel)]="stts_pkrjan" placeholder="Pekerjaan">
+            <ion-select-option value="PNS">PNS</ion-select-option>
+            <ion-select-option value="Karyawan Swasta"
+              >Karyawan Swasta</ion-select-option
+            >
+            <ion-select-option value="Dosen">Dosen</ion-select-option>
+            <ion-select-option value="Guru">Guru</ion-select-option>
+            <ion-select-option value="Wiraswasta">Wiraswasta</ion-select-option>
+            <ion-select-option value="Mengurus Rumah Tangga"
+              >Mengurus Rumah Tangga</ion-select-option
+            >
+            <ion-select-option value="Pelajar/Mahasiswa"
+              >Pelajar/Mahasiswa</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status Kewarganegaraan</ion-label>
+          <ion-select [(ngModel)]="stts_kwngn" placeholder="Kewarganegaraan">
+            <ion-select-option value="WNI">WNI</ion-select-option>
+            <ion-select-option value="WNA">WNA</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Kode Blok</ion-label>
+          <ion-select [(ngModel)]="kd_blok" placeholder="Kode Blok">
+            <ion-select-option
+              *ngFor="let blok of Blok"
+              value="{{blok.kd_blok}}"
+              >{{blok.nama_blok}}.{{blok.no_blok}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status Kavling</ion-label>
+          <ion-select [(ngModel)]="stts_kvlng" placeholder="Kavling">
+            <ion-select-option value="Pemilik">Pemilik</ion-select-option>
+            <ion-select-option value="Kontrak">Kontrak</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status Huni</ion-label>
+          <ion-select [(ngModel)]="stts_huni" placeholder="Huni">
+            <ion-select-option value="Aktif">Aktif</ion-select-option>
+            <ion-select-option value="Tidak Aktif">Tidak Aktif</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="form-group mt-3 mx-2">
+          <button class="form-control btn btn-success" (click)="Update()">
+            Ubah
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

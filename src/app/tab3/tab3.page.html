@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #043724">
+    <div class="d-flex justify-content-between mx-2">
+      <img src="assets/logo/GFH_Logo.png" alt="" width="150px" />
+      <div
+        class="d-flex justify-content-center align-items-center"
+        (click)="logout()"
+      >
+        <span class="text-white">Logout</span>
+        <ion-icon
+          name="log-out-outline"
+          class="ms-1 text-white"
+          style="font-size: 20px"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="mx-1 mt-2 mb-5">
+      <ion-card class="my-2" style="border-radius: 15px; --background: #f5f7f8" *ngFor = 'let data of Data'>
+        <ion-card-header class="p-2 px-3">
+          <div class="d-block">
+            <div>
+              <span style="color: #043724; font-size: 20px; font-weight: 600;"
+                >{{data.judul_info}}</span
+              >
+            </div>
+            <div>
+              <span class="mt-2" style="color: #043724; font-size: 15px"
+                >{{data.informasi}}</span
+              >
+            </div>
+          </div>
+          <div class="w-100 d-flex justify-content-end mt-1 text-end">
+            <ion-card-subtitle style="font-size: 12px"
+              >{{data.tgl_info}}</ion-card-subtitle
+            >
+          </div>
+        </ion-card-header>
+      </ion-card>
+    </div>
+</ion-content>

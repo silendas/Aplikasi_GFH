@@ -1,0 +1,56 @@
+<ion-content>
+  <div class="center">
+    <div class="container costum">
+
+      <div class="d-flex justify-content-center">
+        <img src="assets/logo/GFH_Logo.png" alt="Logo Unbin" style="width: 400px" />
+      </div>
+
+      <div class="mt-4 mx-2">
+        <div class="form-group">
+          <ion-label position="stacked" class="text-white mx-2">Username</ion-label>
+          <ion-input
+            [(ngModel)]="username"
+            class="form-control p-2 py-0"
+            placeholder="Masukan username anda..."
+            style="height: 40px; align-items: center;display: flex;"
+            required
+          ></ion-input>
+        </div>
+        <div class="form-group mt-1">
+          <ion-label position="stacked" class="text-white mx-2">Password</ion-label>
+          <div class="input-group mb-3">
+            <ion-input
+            [(ngModel)]="password"
+            class="form-control p-2 py-0"
+            placeholder="Masukan password anda..."
+            [type]="passwordType" clearOnEdit="false"
+            style="height: 40px; align-items: center;display: flex;"
+            required
+          ></ion-input>
+            <div class="input-group-append">
+              <div class="input-group-text d-flex align-items-center justify-content-center" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; background:#14A44D; border: 1px solid #14A44D; height: 40px;">
+                <ion-icon item-end [name]="passwordIcon" class="passwordIcon text-white" (click)='hideShowPassword()' slot="end" style="font-size: 18px;"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-2 mx-2">
+        <button (click)="login()" class="form-control btn btn-success w-100">
+          Login
+        </button>
+      </div>
+
+      <div class="mt-4 mx-2 d-flex justify-content-center">
+        <div class="text-white" style="font-size: 16px;">
+          Belum punya akun? <span class="text-primary border-bottom border-primary" style="font-weight: bold;" (click)="register()">Daftar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    Copyright © Greenland Forest Hill 2023
+  </div>
+</ion-content>

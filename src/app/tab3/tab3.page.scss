@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,500&display=swap');
+
+.text-white {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bg {
+    /* The image used */
+    --background: url("../../assets/img/bg_mobile_gl.jpg") repeat center center fixed;
+  
+    /* Full height */
+    //height: 100%;
+    
+  
+    /* Center and scale the image nicely */
+    background-repeat: repeat;
+    background-size: cover;
+  }

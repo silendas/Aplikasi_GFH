@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #043724">
+    <div class="d-flex justify-content-between mx-2">
+      <img src="assets/logo/GFH_Logo.png" alt="" width="150px" />
+      <div
+        class="d-flex justify-content-center align-items-center"
+        (click)="logout()"
+      >
+        <span class="text-white">Logout</span>
+        <ion-icon
+          name="log-out-outline"
+          class="ms-1 text-white"
+          style="font-size: 20px"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="pt-1 mb-5">
+    <div *ngFor="let data of Data">
+      <div class="w-100 d-flex justify-content-end px-1">
+        <div class="w-auto">
+          <ion-card class="my-1" style="border-radius: 20px; border-top-right-radius: 5px; --background: #F5F7F8;"> 
+            <ion-card-header>
+              <div class="d-flex justify-content-end">
+                <div class="d-block text-end">
+                  <ion-card-title class="text-start w-100 d-flex justify-content-start" style="font-size: 17px;">{{data.pesan}}</ion-card-title>
+                  <div class="w-100 d-flex justify-content-end mt-1 text-end">
+                    <ion-card-subtitle class="text-end" style="font-size: 12px;">{{data.tgl_pesan}}</ion-card-subtitle>
+                  </div>
+                </div>
+              </div>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="msg-input" [class]="pesanInputClass">
+    <div class="d-flex bg-white shadow-lg align-items-center justify-content-between px-1 mx-1" style="border: 1px solid #043724; border-radius: 10px;">
+      <ion-input
+        type="text"
+        name="msg"
+        [(ngModel)]="msg"
+        placeholder="Ketik pesan anda..."
+        style="height: 50px;"
+
+      ></ion-input>
+      <ion-icon name="send-outline" class="mx-1" style="font-size: 20px; color: #043724;" (click)="send()"></ion-icon>
+    </div>
+  </div>
+</ion-content>

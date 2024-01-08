@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="px-2" style="--background: #043724">
+    <div class="d-flex align-items-center w-100">
+      <ion-buttons>
+        <ion-icon
+          name="arrow-back-circle-outline"
+          style="font-size: 30px; color: white"
+          [routerLink]="['/login']"
+        ></ion-icon>
+      </ion-buttons>
+      <div>
+        <ion-title class="text-white">Pendaftaran</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="height: 100%" class="bg">
+  <div class="bg-item">
+    <div style="font-weight: 600; letter-spacing: 1px">
+      <div class="d-block justify-content-center py-3 h-100">
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">NIK</ion-label>
+          <ion-input
+            [(ngModel)]="nik"
+            placeholder="Input NIK"
+            class="mt-1"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">Email</ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="email"
+            placeholder="Input Email"
+            class="mt-1"
+            required
+          ></ion-input>
+        </ion-item>
+        <div class="form-group mt-3 mx-2">
+          <button class="form-control btn btn-success" (click)="Insert()">
+            Mendaftar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

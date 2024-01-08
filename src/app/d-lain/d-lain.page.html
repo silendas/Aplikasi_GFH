@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="px-2" style="--background: #043724">
+    <div class="d-flex align-items-center w-100">
+      <ion-buttons>
+        <ion-icon
+          name="arrow-back-circle-outline"
+          style="font-size: 30px; color: white"
+          [routerLink]="['/tabs/tab1']"
+        ></ion-icon>
+      </ion-buttons>
+      <div>
+        <ion-title class="text-white">Histori Pembayaran Lain</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="mx-1 mt-2 mb-5">
+    <div 
+      class="d-flex bg-white shadow align-items-center justify-content-between rounded border border-secondary px-1 mx-2"
+      style="background: #f5f7f8"
+    >
+    <ion-item>
+      <ion-label>Tahun Pembayaran</ion-label>
+      <ion-select [(ngModel)]="searchYear" placeholder="Tahun Pembayaran">
+        <ion-select-option
+          *ngFor="let tahun of tahunList"
+          value="{{tahun.tahun}}"
+          >{{tahun.tahun}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+      <ion-icon
+        name="search"
+        class="mx-1"
+        style="font-size: 20px"
+        (click)="getPayment()"
+      ></ion-icon>
+    </div>
+    <div *ngFor="let data of Data">
+      <ion-card class="my-2" style="border-radius: 15px; --background: #f5f7f8">
+        <ion-card-header>
+          <div class="d-flex justify-content-between w-100">
+            <ion-card-title>{{data.kas_bulan}}</ion-card-title>
+            <button class="btn btn-success p-1 px-2 m-0">
+              {{data.status}}
+            </button>
+          </div>
+          <div class="block">
+            <span>{{data.jenis_pembayaran}}</span>
+            <div>
+              <span class="mt-2">Tahun : {{data.kas_tahun}}</span>
+            </div>
+          </div>
+          <ion-card-subtitle>Keterangan : {{data.keterangan}}</ion-card-subtitle>
+          <div class="w-100 d-flex justify-content-end mt-1 text-end">
+            <ion-card-subtitle>{{data.tgl_pembayaran}}</ion-card-subtitle>
+          </div>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+ion-content{
+  --background: #043724;
+}
+
+.login-txt{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #F6FFFD;
+}
+
+.login-text {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.center {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.costum {
+  margin-top: -80px;
+}
+
+.footer {
+  display: flex;
+  position: absolute;
+  bottom: 5px;
+  color: #deefeb;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.see{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+}

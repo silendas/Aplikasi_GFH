@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #043724">
+    <div class="d-flex justify-content-between mx-2">
+      <img src="assets/logo/GFH_Logo.png" alt="" width="150px" />
+      <div
+        class="d-flex justify-content-center align-items-center"
+        (click)="logout()"
+      >
+        <span class="text-white">Logout</span>
+        <ion-icon
+          name="log-out-outline"
+          class="ms-1 text-white"
+          style="font-size: 20px"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg">
+  <div class="container">
+    <div class="d-block justify-content-center text-center mt-2">
+      <div>
+        <span
+          style="
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+          "
+          >Anggota Keluarga</span
+        >
+      </div>
+      <ion-input
+        [(ngModel)]="kk"
+        name="kk"
+        class="p-0 m-0"
+        [readonly]="isReadOnly()"
+        style="font-size: 20px; letter-spacing: 2px; font-weight: 600"
+      ></ion-input>
+    </div>
+    <div class="d-flex justify-content-center text-center mt-1 w-100">
+      <button
+        class="btn rounded mx-2 w-100"
+        (click)="tambah()"
+        style="background: #043724; color: white"
+      >
+        Tambah Anggota Keluarga
+      </button>
+    </div>
+    <div *ngFor="let data of Data">
+      <ion-card *ngIf="data == null || data == undefined">
+        <ion-card-header>
+          No Data Found
+        </ion-card-header>
+      </ion-card>
+      <ion-card class="my-3" style="border-radius: 20px; --background: #f5f7f8">
+        <ion-card-header>
+          <div class="d-flex justify-content-center text-center">
+            <ion-card-title class="text-center" style="font-size: 25px"
+              >{{data.nama}}</ion-card-title
+            >
+          </div>
+          <div class="d-block mt-1">
+            <div class="d-flex justify-content-center">
+              <ion-card-subtitle style="font-size: 15px"
+                >{{data.status_keluarga}}</ion-card-subtitle
+              >
+            </div>
+            <div class="d-flex justify-content-center">
+              <ion-card-subtitle style="font-size: 15px; letter-spacing: 1px"
+                >NIK : {{data.nik}} ({{data.stts_nik}})</ion-card-subtitle
+              >
+            </div>
+          </div>
+          <button
+            class="btn w-100 mt-2"
+            style="background: #043724; color: white"
+            (click)="editKK(data.kd_penduduk)"
+          >
+            Ubah Data
+          </button>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

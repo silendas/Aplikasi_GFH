@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="px-2" style="--background: #043724">
+    <div class="d-flex align-items-center w-100">
+      <ion-buttons>
+        <ion-icon
+          name="arrow-back-circle-outline"
+          style="font-size: 30px; color: white"
+          [routerLink]="['/tabs/tab1']"
+        ></ion-icon>
+      </ion-buttons>
+      <div>
+        <ion-title class="text-white">Pembayaran</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg">
+  <div class="d-block justify-content-center py-2">
+    <ion-item>
+      <ion-label>Jenis Pembayaran</ion-label>
+      <ion-select [(ngModel)]="jenis" placeholder="Jenis Pembayaran">
+        <ion-select-option value="KAS">Kas</ion-select-option>
+        <ion-select-option value="Lainnya">Lainnya</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked" style="font-size: 22px; padding: 0px"
+        >Keterangan</ion-label
+      >
+      <ion-textarea
+        [(ngModel)]="ket"
+        placeholder="Keterangan pembayaran..."
+      ></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bulan Pembayaran</ion-label>
+      <ion-select [(ngModel)]="bulan" placeholder="Bulan Pembayaran">
+        <ion-select-option value="1">Januari</ion-select-option>
+        <ion-select-option value="2">Februari</ion-select-option>
+        <ion-select-option value="3">Maret</ion-select-option>
+        <ion-select-option value="4">April</ion-select-option>
+        <ion-select-option value="5">Mei</ion-select-option>
+        <ion-select-option value="6">Juni</ion-select-option>
+        <ion-select-option value="7">July</ion-select-option>
+        <ion-select-option value="8">Agustus</ion-select-option>
+        <ion-select-option value="9">September</ion-select-option>
+        <ion-select-option value="10">Oktober</ion-select-option>
+        <ion-select-option value="11">November</ion-select-option>
+        <ion-select-option value="12">Desember</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tahun Pembayaran</ion-label>
+      <ion-select [(ngModel)]="tahun" placeholder="Tahun Pembayaran">
+        <ion-select-option
+          *ngFor="let tahun of tahunList"
+          value="{{tahun.tahun}}"
+          >{{tahun.tahun}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <div class="d-block mt-3 mx-2">
+      <ion-label>Bukti pembayaran</ion-label>
+      <ion-input
+        (change)="getFile($event)"
+        class="mt-2"
+        type="file"
+      ></ion-input>
+    </div>
+    <div class="form-group mt-3 mx-2">
+      <button class="form-control btn btn-success" (click)="insertIuran()">
+        Kirim
+      </button>
+    </div>
+  </div>
+</ion-content>

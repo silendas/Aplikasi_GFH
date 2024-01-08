@@ -1,0 +1,81 @@
+.logo-unbin {
+  position: absolute;
+  display: flex;
+  bottom: 25px;
+  width: 100%;
+  justify-content: center;
+}
+ion-tab-bar {
+  border: none;
+  --background: linear-gradient(0deg,  rgb(17, 17, 17) 0%, rgba(4,55,36,1) 15%, rgba(3,71,46,1) 100%);
+}
+
+// .btn-costumize{
+//   margin-top: -50px;
+//   --overflow: visible;
+// }
+
+button[ion-fab] {
+  overflow: visible;
+  position: relative;
+  margin-top: 5px;
+  padding: 12px;
+  border-radius: 50%;
+  background:#043724;
+  color: white;
+
+
+  ion-label {
+      position: absolute;
+      top: 4px;
+      width: 150px;
+      right: 45px;
+
+      color: white;
+      background-color: rgba(0,0,0,0.7);
+      line-height: 18px;
+      padding: 8px;
+      border-radius: 4px;
+  }
+  contain: layout;
+}
+
+ion-tab-button{
+  font-size: 10px;
+  --color: #fff;
+  --background-focused: #fff;
+  --color-selected: #fff;
+  --padding-end: 0px;
+  --padding-start: 0px;
+  --padding-bottom: 0px;
+  --margin-left:0px;
+  --margin-right:0px;
+  max-width:100px;
+}
+
+.border-costum {
+  border-radius: 50%;
+  border: 3px solid aliceblue;
+  //border-color: aliceblue;
+  //border-color: #043724;
+}
+
+ion-fab-button{
+  --background:#043724;
+  ion-icon{
+    color: white;
+  }
+}
+
+body.keyboard-is-open ion-fab {
+  display: none;
+}
+
+body.keyboard-is-open scroll-content {
+  margin-bottom: 0 !important;
+}
+
+// ion-tab-button {
+//   --background-focused: #043724;
+//   --color-selected: #043724;
+// }

@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="px-2" style="--background: #043724">
+    <div class="d-flex align-items-center w-100">
+      <ion-buttons>
+        <ion-icon
+          name="arrow-back-circle-outline"
+          style="font-size: 30px; color: white"
+          [routerLink]="['/tabs/tab1']"
+        ></ion-icon>
+      </ion-buttons>
+      <div>
+        <ion-title class="text-white">Ubah Akun</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="height: 100%" class="bg">
+  <div class="bg-item">
+    <div style="font-weight: 600; letter-spacing: 1px">
+      <div class="d-block justify-content-center py-3 h-100">
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">Email</ion-label>
+          <ion-input
+            [(ngModel)]="email"
+            placeholder="Ubah dengan email yang baru..."
+            class="mt-1"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">Username</ion-label>
+          <ion-input
+            [(ngModel)]="username"
+            placeholder="Ubah dengan username yang baru..."
+            class="mt-1"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="size-stacked">Password</ion-label>
+          <ion-input
+            [(ngModel)]="password"
+            placeholder="Ubah dengan password yang baru..."
+            class="mt-1"
+            required
+          ></ion-input>
+        </ion-item>
+        <div class="form-group mt-3 mx-2">
+          <button class="form-control btn btn-success" (click)="updateUser()">
+            Ubah
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

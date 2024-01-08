@@ -1,18 +1,32 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
+  providers: [Storage],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
-  ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  constructor(
+    private navCtrl: NavController,
+    private storage: Storage
+  ) {
+    this.initializeApp();
+  }
+
+  async initializeApp() {
+    this.navCtrl.navigateRoot('/splash');
+    setTimeout(async () => {
+      await this.storage.create();
+      this.storage.get('isLoggedIn').then((val) => {
+        if (val === null || val === undefined || val === '') {
+          this.navCtrl.navigateRoot('/login');
+        } else {
+          this.navCtrl.navigateRoot('/tabs/tab1');
+        }
+      });
+    }, 1500);
+  }
 }
